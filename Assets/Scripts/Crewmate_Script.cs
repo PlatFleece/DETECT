@@ -9,6 +9,8 @@ public class Crewmate_Script : MonoBehaviour
     public Transform target;
     public float activeDistance = 50f;
     public float updateSecs = 0.5f;
+    public float currentLoc = 0;
+    public float targetLoc = 0;
 
     [Header("Physics")]
     public float speed = 3f;
@@ -34,6 +36,7 @@ public class Crewmate_Script : MonoBehaviour
 
     private void FixedUpdate()
     {
+              
         if (TargetInDistance() && followEnabled)
         {
             PathFollow();
@@ -70,7 +73,7 @@ public class Crewmate_Script : MonoBehaviour
          Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
 
 
-        Debug.Log(direction);
+        //Debug.Log(direction);
 
         //Move the Target, stopping when it reaches 0.05f
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
