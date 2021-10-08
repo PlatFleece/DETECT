@@ -25,7 +25,7 @@ public class DummyColliderTest : MonoBehaviour
         //Debug.Log("this is floor number" + floorNum);
         if (hasCollision)
         {
-            Debug.Log("There's someone inside of me");
+            //Debug.Log("There's someone inside of me");
         }
     }
 

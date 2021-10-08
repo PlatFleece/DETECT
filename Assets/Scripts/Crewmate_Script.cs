@@ -7,6 +7,7 @@ public class Crewmate_Script : MonoBehaviour
 {
     [Header("Pathfinding")]
     public Transform target;
+    public Transform finalTarget;
     public float activeDistance = 50f;
     public float updateSecs = 0.5f;
     public float currentLoc = 0;
@@ -37,15 +38,16 @@ public class Crewmate_Script : MonoBehaviour
     private void FixedUpdate()
     {
               
-        if (TargetInDistance() && followEnabled)
+        if (TargetInDistance(finalTarget) && followEnabled)
         {
             PathFollow();
+           
         }
     }
 
     void UpdatePath()
     {
-        if (TargetInDistance() && followEnabled && seeker.IsDone())
+        if (TargetInDistance(finalTarget) && followEnabled && seeker.IsDone())
         {
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
@@ -77,10 +79,6 @@ public class Crewmate_Script : MonoBehaviour
 
         //Move the Target, stopping when it reaches 0.05f
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        
-
-         
-
 
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
@@ -104,9 +102,60 @@ public class Crewmate_Script : MonoBehaviour
 
     }
 
-    private bool TargetInDistance()
+    private bool TargetInDistance(Transform assignedTarget)
     {
-        return Vector2.Distance(transform.position, target.transform.position) < activeDistance;
+
+        bool inDistance = false;
+        bool sameFloor = false;
+
+        Transform targetFloor = assignedTarget;
+
+        
+        
+        
+        if (Vector2.Distance(transform.position, targetFloor.transform.position) < activeDistance)
+        {
+            inDistance = true;
+        }
+
+        if (targetFloor.tag == "crew")
+        {
+            Crewmate_Script crewScript = targetFloor.GetComponent<Crewmate_Script>();
+            if (crewScript.currentLoc == currentLoc)
+            {
+                sameFloor = true;
+            }
+            else
+            {
+                Debug.Log("I'm not in the same floor, they are in floor " + crewScript.currentLoc);
+            }
+        }
+        if (targetFloor.tag == "object")
+        {
+            Object_Script objScript = targetFloor.GetComponent<Object_Script>();
+            if (objScript.currentLoc == currentLoc)
+            {
+                sameFloor = true;
+            }
+            else
+            {
+                Debug.Log("I'm not in the same floor, they are in floor " + objScript.currentLoc);
+            }
+        }
+
+        if (inDistance && sameFloor)
+        {
+            target = targetFloor;
+            return true;
+        }
+
+        else
+        {
+
+            return false;
+        }
+        
+        //return Vector2.Distance(transform.position, target.transform.position) < activeDistance;
     }
 
     private void OnPathComplete(Path p)
