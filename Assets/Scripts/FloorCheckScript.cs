@@ -20,8 +20,8 @@ public class FloorCheckScript : MonoBehaviour
     string myFloor;
 
     //Script List
-    Crewmate_Script crewScript;
-    Object_Script objScript;
+    public Crewmate_Script crewScript;
+    public Object_Script objScript;
     void Start()
     {
         //find the list of possible floors and also get the name of the current floor we're in

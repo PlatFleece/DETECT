@@ -10,8 +10,9 @@ public class Crewmate_Script : MonoBehaviour
     public Transform finalTarget;
     public float activeDistance = 50f;
     public float updateSecs = 0.5f;
-    public float currentLoc = 0;
-    public float targetLoc = 0;
+    public int currentLoc = 0;
+    public int targetLoc = 0;
+    public bool elevatorUse = false;
 
     [Header("Physics")]
     public float speed = 3f;
@@ -127,7 +128,7 @@ public class Crewmate_Script : MonoBehaviour
             }
             else
             {
-                Debug.Log("I'm not in the same floor, they are in floor " + crewScript.currentLoc);
+                
             }
         }
         if (targetFloor.tag == "object")
@@ -139,13 +140,21 @@ public class Crewmate_Script : MonoBehaviour
             }
             else
             {
-                Debug.Log("I'm not in the same floor, they are in floor " + objScript.currentLoc);
+                targetLoc = objScript.currentLoc;
             }
         }
 
         if (inDistance && sameFloor)
         {
             target = targetFloor;
+            elevatorUse = false;
+            return true;
+        }
+
+        else if (inDistance && !sameFloor)
+        {
+            target = FindElevator(currentLoc);
+            elevatorUse = true;
             return true;
         }
 
@@ -156,6 +165,33 @@ public class Crewmate_Script : MonoBehaviour
         }
         
         //return Vector2.Distance(transform.position, target.transform.position) < activeDistance;
+    }
+
+    private Transform FindElevator(int floorNumber)
+    {
+        Transform ElevatorPos;
+        GameObject ElevObj;
+
+        switch (floorNumber)
+        {
+            case 1:
+                ElevObj = GameObject.Find("Elev1");
+                ElevatorPos = ElevObj.transform;
+                break;
+            case 2:
+                ElevObj = GameObject.Find("Elev2");
+                ElevatorPos = ElevObj.transform;
+                break;
+            case 3:
+                ElevObj = GameObject.Find("Elev3");
+                ElevatorPos = ElevObj.transform;
+                break;
+            default:
+                ElevatorPos = null;
+                break;
+        }
+
+        return ElevatorPos;
     }
 
     private void OnPathComplete(Path p)
