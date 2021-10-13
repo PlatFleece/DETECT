@@ -154,7 +154,7 @@ public class Crewmate_Script : MonoBehaviour
         else if (inDistance && !sameFloor)
         {
             target = FindElevator(currentLoc);
-            elevatorUse = true;
+            //elevatorUse = true;
             return true;
         }
 
@@ -193,6 +193,8 @@ public class Crewmate_Script : MonoBehaviour
 
         return ElevatorPos;
     }
+
+   
 
     private void OnPathComplete(Path p)
     {

@@ -24,36 +24,32 @@ public class Elevator_Script : MonoBehaviour
     {
         GameObject crewmate = collision.gameObject;
 
-        if (collision.tag == "crew")
+        if (collision.tag == "crew" && collision.GetComponent<Crewmate_Script>().target == gameObject.transform)
         {
-            ElevatorCheck(crewmate);
+            ElevatorTransport(crewmate);
         }
     }
 
-    private bool ElevatorCheck(GameObject crewmate)
+    private void ElevatorTransport(GameObject crewmate)
     {
         crewScript = crewmate.GetComponent<Crewmate_Script>();
 
-        if (crewScript.elevatorUse)
-        {
-            StartCoroutine(EleWaiter(crewmate));
-        }
-        else
-        {
-            
-        }
 
-        return true;
+            //crewScript.elevatorUse = false;
+            //Debug.Log(name + "is going to teleport because " + crewScript.name + "'s ElevatorUse is " + crewScript.elevatorUse);
+            StartCoroutine(EleWaiter(crewmate));
+
+
     }
 
     IEnumerator EleWaiter(GameObject crewmate)
     {
+        yield return new WaitForSeconds(1);
         int elevFloor = crewScript.targetLoc;
         Transform crewPos = crewmate.transform;
-
         elevTarget = FindElevator(elevFloor);
-        yield return new WaitForSeconds(5);
         crewPos.position = elevTarget.transform.position;
+
     }
 
     private Transform FindElevator(int floorNumber)
