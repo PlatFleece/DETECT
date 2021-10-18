@@ -33,6 +33,8 @@ public class Crewmate_Script : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
+        Physics2D.IgnoreLayerCollision(6, 6);
+
         InvokeRepeating("UpdatePath", 0f, updateSecs);
     }
 

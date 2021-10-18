@@ -154,7 +154,7 @@ Transform:
   - {fileID: 1956390627}
   - {fileID: 1734443726}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &47408186
 GameObject:
@@ -249,10 +249,11 @@ GameObject:
   m_Component:
   - component: {fileID: 129034332}
   - component: {fileID: 129034334}
+  - component: {fileID: 129034335}
   - component: {fileID: 129034333}
   m_Layer: 0
   m_Name: Elev1
-  m_TagString: Untagged
+  m_TagString: elevator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,6 +312,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.463866, y: 3.8090405}
   m_EdgeRadius: 0
+--- !u!50 &129034335
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129034331}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &139831153
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +430,7 @@ GameObject:
   - component: {fileID: 447030667}
   - component: {fileID: 447030670}
   - component: {fileID: 447030668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crewmate A
   m_TagString: crew
   m_Icon: {fileID: 0}
@@ -465,7 +487,7 @@ Transform:
   m_Children:
   - {fileID: 1651214965}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &447030670
 MonoBehaviour:
@@ -542,6 +564,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &511220815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511220817}
+  - component: {fileID: 511220816}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &511220816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511220815}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ee6762e31c0b54daa2d8924a4e2f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &511220817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511220815}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.495306, y: 10.242752, z: -9.11421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +618,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -568,6 +634,18 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ee6762e31c0b54daa2d8924a4e2f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -618,7 +696,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -639,7 +717,7 @@ GameObject:
   - component: {fileID: 620675396}
   - component: {fileID: 620675395}
   - component: {fileID: 620675394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crewmate B2
   m_TagString: crew
   m_Icon: {fileID: 0}
@@ -771,7 +849,7 @@ Transform:
   m_Children:
   - {fileID: 1719388115}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &645214039
 GameObject:
@@ -949,7 +1027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 674025134}
   - component: {fileID: 674025135}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1114,7 @@ GameObject:
   - component: {fileID: 686017071}
   - component: {fileID: 686017070}
   - component: {fileID: 686017069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crewmate C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1246,7 @@ Transform:
   m_Children:
   - {fileID: 687560967}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &687560966
 GameObject:
@@ -1180,7 +1258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687560967}
   - component: {fileID: 687560968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1363,7 @@ Transform:
   m_Children:
   - {fileID: 1790867993}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &704229072
 MonoBehaviour:
@@ -1436,7 +1514,7 @@ Transform:
   m_Children:
   - {fileID: 2143212517}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &969426072
 Rigidbody2D:
@@ -1530,7 +1608,7 @@ Transform:
   m_Children:
   - {fileID: 649509361}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &975329089
 MonoBehaviour:
@@ -1624,7 +1702,7 @@ Transform:
   - {fileID: 1304248437}
   - {fileID: 1507950991}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1017384430
 MonoBehaviour:
@@ -1672,7 +1750,7 @@ Transform:
   m_Children:
   - {fileID: 1108727175}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1025759689
 MonoBehaviour:
@@ -1765,7 +1843,7 @@ Transform:
   - {fileID: 1516222880}
   - {fileID: 1336589405}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108727174
 GameObject:
@@ -1934,7 +2012,7 @@ Transform:
   m_LocalScale: {x: 1.2375, y: 0.32485, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1304248436
 GameObject:
@@ -2163,7 +2241,7 @@ GameObject:
   - component: {fileID: 1446916281}
   - component: {fileID: 1446916280}
   - component: {fileID: 1446916279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Crewmate B
   m_TagString: crew
   m_Icon: {fileID: 0}
@@ -2295,7 +2373,7 @@ Transform:
   m_Children:
   - {fileID: 674025134}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451806441
 GameObject:
@@ -2339,7 +2417,7 @@ Transform:
   m_Children:
   - {fileID: 1498022297}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498022296
 GameObject:
@@ -4780,7 +4858,7 @@ Transform:
   m_Children:
   - {fileID: 1413628508}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1513173635
 MonoBehaviour:
@@ -4909,7 +4987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1651214965}
   - component: {fileID: 1651214964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4992,7 +5070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1719388115}
   - component: {fileID: 1719388116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5372,6 +5450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1956390627}
   - component: {fileID: 1956390628}
+  - component: {fileID: 1956390630}
   - component: {fileID: 1956390629}
   m_Layer: 0
   m_Name: Elev2
@@ -5434,6 +5513,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elevTarget: {fileID: 0}
+--- !u!50 &1956390630
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956390626}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
 --- !u!1 &1987675453
 GameObject:
   m_ObjectHideFlags: 0
@@ -5463,7 +5563,7 @@ Transform:
   m_Children:
   - {fileID: 47408187}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143212516
 GameObject:
