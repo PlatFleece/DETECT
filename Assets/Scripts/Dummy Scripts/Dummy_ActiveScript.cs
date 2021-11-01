@@ -16,7 +16,7 @@ public class Dummy_ActiveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("x"))
+        if (Input.GetKeyDown("x"))
         {
             Debug.Log("x is pressed");
             if (!childObject.activeSelf)
